@@ -44,7 +44,7 @@ class Postit {
         monElem.style.backgroundColor = this.backgroundColor;
         monElem.style.padding = "5px";
         monElem.style.color = this.textColor;
-        monElem.innerHTML = textContent;
+        monElem.innerHTML = this.textContent;
         document.body.appendChild(monElem);
     }
 }
