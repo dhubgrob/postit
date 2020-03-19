@@ -44,11 +44,14 @@ class Postit {
         monElem.style.backgroundColor = this.backgroundColor;
         monElem.style.padding = "5px";
         monElem.style.color = this.textColor;
+        monElem.style.borderRadius = "5px";
         monElem.innerHTML = this.textContent;
         document.body.appendChild(monElem);
     }
 }
 
 
-monTest = new Postit('red', 'yellow', 'ne pas oublier', 200, 200, 120, 160);
+monTest = new Postit('red', 'yellow', 'ne pas oublier', 200, 200, 40, 100);
 monTest.afficheTest();
+
+

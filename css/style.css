@@ -1,0 +1,22 @@
+body {
+    font-family: sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#mes-postit {
+    position: absolute;
+    width: 20vw;
+    height: 100vh;
+    background-color: lightblue;
+    text-align: center;
+}
+
+#zone-depot {
+    background-color: lightgray;
+    width: 80vw;
+    height: 100vh;
+    float: right;
+}
