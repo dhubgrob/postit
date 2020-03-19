@@ -7,22 +7,22 @@ class Postit {
     positionX;
     positionY;
 
-    constructor(backgroundColor, height, width, textColor, textContent, positionX, positionY) {
-        this.backgroundColor = 'red';
-        this.height = 200;
-        this.width = 200;
-        this.textColor = 'yellow';
-        this.textContent = 'ne pas oublier !';
-        this.positionX = 120;
-        this.positionY = 160;
+    constructor(backgroundColor, textColor, textContent, height, width, positionX, positionY) {
+        this.backgroundColor = backgroundColor;
+        this.height = height;
+        this.width = width;
+        this.textColor = textColor;
+        this.textContent = textContent;
+        this.positionX = positionX;
+        this.positionY = positionY;
     }
 
     changeBackgroundColor(backgroundColor){
-        this.backgroundColor = 'red';
+        this.backgroundColor = backgroundColor;
     }
     resize(width, height){
-        this.width = 200;
-        this.height = 200;
+        this.width = width;
+        this.height = height;
     }
     move(positionX, positionY){
         this.positionX = positionX;
@@ -32,12 +32,13 @@ class Postit {
         this.textContent = textContent;
     }
     changeTextColor(textColor){
-        this.textColor = 'yellow';
+        this.textColor = textColor;
     }
     afficheTest() {
         let monElem = document.createElement('div')
-        monElem.style.top = this.y + "px";
-        monElem.style.left = this.x + "px";
+        monElem.style.position = "fixed";
+        monElem.style.top = this.positionY + "px";
+        monElem.style.left = this.positionX + "px";
         monElem.style.width = this.width + "px";
         monElem.style.height = this.height + "px";
         monElem.style.backgroundColor = this.backgroundColor;
@@ -49,53 +50,5 @@ class Postit {
 }
 
 
-
-/*
-
-class ClasseTest {
-    x;
-    y;
-    vitesse;
-    couleur;
-
-    constructor(x, y, vitesse, couleur) {
-        this.x = x;
-        this.y = y;
-        this.vitesse = vitesse;
-        this.couleur = couleur;
-    }
-
-    changeVitesse(vitesse) {
-        this.vitesse = vitesse;
-    }
-
-    changePlace(x, y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    changeCouleur(coul) {
-        this.couleur = coul;
-    }
-
-    afficheTest() {
-        let monElem = document.createElement('div')
-        monElem.style.position = "fixed";
-        monElem.style.top = this.y + "px";
-        monElem.style.left = this.x + "px";
-        monElem.style.width = "150px";
-        monElem.style.height = "150px";
-        monElem.style.backgroundColor = this.couleur;
-        monElem.style.padding = "5px";
-        monElem.style.color = "black";
-        monElem.innerHTML = "Je suis un objet de test, j'avance à " + this.vitesse + " Vroum";
-        document.body.appendChild(monElem);
-    }
-}
-
-monTest = new ClasseTest(100, 200, 30, 'red');
+monTest = new Postit('red', 'yellow', 'ne pas oublier', 200, 200, 120, 160);
 monTest.afficheTest();
-
-
-
-*/
