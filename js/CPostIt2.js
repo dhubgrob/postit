@@ -36,7 +36,22 @@ class Postit {
     }
     afficheTest() {
         let monElem = document.createElement('div')
-        
+        let creation = false;
+
+                //Ma voiture existe t'elle ?
+                if (document.getElementById('testpostit') == null) {
+                    //non, on la créé
+                    monElem = document.createElement('div');
+                    creation = true;
+                }
+                else {
+                    //oui, on la récupère
+                    console.log("Mon elem Existe")
+                    monElem = document.getElementById('testpostit');
+                }
+
+
+        monElem.id = "testpostit"
         monElem.style.position = "fixed";
         monElem.style.top = this.positionY + "px";
         monElem.style.left = this.positionX + "px";
@@ -49,8 +64,8 @@ class Postit {
         monElem.innerHTML = this.textContent;
         document.body.appendChild(monElem);
 
-        monElem.addEventListener('mousedown', () => {
-            console.log("mousedown")
+        monElem.addEventListener('click', () => {
+            console.log("clic!")
             actionClic = true;
         });
     }

@@ -9,10 +9,7 @@ monTest.afficheTest();
 document.addEventListener('mousemove', e => {
     x = e.clientX;
     y = e.clientY;
-    if(actionClic==true) {
-        monTest.positionX = x;
-        monTest.positionY = y;
-    }
+
 })
 
 document.addEventListener('mouseup', () => {
@@ -23,7 +20,7 @@ document.addEventListener('mouseup', () => {
 function refresh() {
     if (actionClic) {
         console.log("on déplace !");
-        monTest.move(this.positionX, this.positionY);
+        monTest.move(x, y);
         monTest.afficheTest();
     }
     setTimeout(refresh, 100);
