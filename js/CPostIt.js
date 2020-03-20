@@ -55,14 +55,15 @@ class Postit {
 }
 
 
-
-monTest = new Postit('red', 'yellow', 'ne pas oublier', 200, 200, 40, 100);
+// affichage de la pile de postit
+monTest = new Postit('red', 'yellow', '', 200, 200, 40, 100);
 monTest.afficheTest();
 
 // création d'un événement : si on clique sur la pile de postit...
 document.getElementById('testPostit').addEventListener('mousedown', event => {
 // on crée une copie du postit
     let monNouvelElem = document.createElement('div');
+    monNouvelElem.setAttribute("id", "newPostit");
     monNouvelElem.style.position = "fixed";
     monNouvelElem.style.top = monTest.positionY + "px";
     monNouvelElem.style.left = monTest.positionX + "px";
@@ -75,8 +76,12 @@ document.getElementById('testPostit').addEventListener('mousedown', event => {
     monNouvelElem.innerHTML = monTest.textContent;
     monNouvelElem.style.zIndex = 1000;
     document.body.appendChild(monNouvelElem);
-// avec un logo delete dessus
+// avec un logo delete dessus. Marche pas top
+
+/*
+
     let logoDelete = document.createElement('div');
+    logoDelete.setAttribute("id", "logo-delete");
     logoDelete.style.position = "fixed";
     logoDelete.style.backgroundImage = "url('img/delete.jpg')";
     logoDelete.style.backgroundSize = 'contain';
@@ -84,17 +89,17 @@ document.getElementById('testPostit').addEventListener('mousedown', event => {
     logoDelete.style.left = (monTest.positionY + 50) + "px";
     logoDelete.style.width = "15px";
     logoDelete.style.height = "15px";
-    logoDelete.style.zIndex = 1000;
-    document.body.appendChild(logoDelete);
-    
-// on lui applique une fonction pour le clic de départ
+    logoDelete.style.zIndex = 1001;
+    document.getElementById('newPostit').appendChild(logoDelete);
+*/    
+// on lui applique une fonction pour le clic de départ sur la pile de postit
     moveAt(event.pageX, event.pageY);
-// voilà la fonction
+
 function moveAt(pageX, pageY) {
     monNouvelElem.style.left = pageX - monNouvelElem.offsetWidth / 2 + 'px';
     monNouvelElem.style.top = pageY - monNouvelElem.offsetHeight / 2 + 'px';
-    logoDelete.style.left = pageX - monNouvelElem.offsetWidth / 2 + 'px';
-    logoDelete.style.top = pageY - monNouvelElem.offsetHeight / 2 + 'px';
+   // logoDelete.style.left = pageX - monNouvelElem.offsetWidth / 2 + 'px';
+    // logoDelete.style.top = pageY - monNouvelElem.offsetHeight / 2 + 'px';
   }
   
 
@@ -110,3 +115,5 @@ function moveAt(pageX, pageY) {
   };
 
 });
+
+
