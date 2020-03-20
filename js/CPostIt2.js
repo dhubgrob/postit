@@ -36,7 +36,7 @@ class Postit {
     }
     afficheTest() {
         let monElem = document.createElement('div')
-        monElem.setAttribute("id", "testPostit");
+        
         monElem.style.position = "fixed";
         monElem.style.top = this.positionY + "px";
         monElem.style.left = this.positionX + "px";

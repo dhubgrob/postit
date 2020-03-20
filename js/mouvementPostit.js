@@ -22,12 +22,14 @@ document.addEventListener('mouseup', () => {
 
 function refresh() {
     if (actionClic) {
-        // console.log("on déplace !");
-        monTest.changePlace(positionX, positionY);
+        console.log("on déplace !");
+        monTest.move(this.positionX, this.positionY);
         monTest.afficheTest();
     }
     setTimeout(refresh, 100);
 }
+
+refresh();
 
 /*
 function refresh() {
