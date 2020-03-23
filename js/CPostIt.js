@@ -51,7 +51,6 @@ class Postit {
         monElem = document.getElementById('testpostit');
         }
 
-
         monElem.id = "testpostit";
         monElem.style.position = "fixed";
         monElem.style.top = this.positionY + "px";
@@ -64,11 +63,7 @@ class Postit {
         monElem.style.borderRadius = "5px";
         monElem.innerHTML = this.textContent;
         
-
-
-
         document.body.appendChild(monElem);
-
 
         jdeAttachElem("testpostit", "div", ["basDroite"], "menBas") 
 
@@ -85,10 +80,11 @@ class Postit {
         jdeAttachElem("testpostit", 'i', ["fas", "fa-edit"], "", () => {
             console.log("content sur postIt");
             etatChangeContent = true;
+            let content = window.prompt('entrez un texte');
+            console.log(content);
+            
+            jdeAttachElem("testpostit", "p", ["content"], "content")
+            document.getElementById("content").innerHTML = content;
         });
-
-       // monElem.addEventListener('click', () => {
-         //   etatMove = true;
-       // });
     }
 }

@@ -17,7 +17,15 @@ document.addEventListener('mousemove', e => {
 document.addEventListener('mouseup', () => {
     etatMove = false;
     etatResize = false;
+    etatChangeContent = false;
 })
+
+
+
+
+
+
+
 
 function refresh() {
     if (etatMove) {
@@ -28,6 +36,7 @@ function refresh() {
         monTest.resize(x, y);
         monTest.afficheTest();
     }
+
     setTimeout(refresh, 100);
 }
 
