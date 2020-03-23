@@ -36,7 +36,21 @@ class Postit {
     }
     afficheTest() {
         let monElem = document.createElement('div')
-        monElem.setAttribute("id", "testPostit");
+        let creation = false;
+
+                //Ma voiture existe t'elle ?
+                if (document.getElementById('testpostit') == null) {
+                    //non, on la crée
+                    monElem = document.createElement('div');
+                    creation = true;
+                }
+                else {
+                    //oui, on la récupère
+                    monElem = document.getElementById('testpostit');
+                }
+
+
+        monElem.id = "testpostit";
         monElem.style.position = "fixed";
         monElem.style.top = this.positionY + "px";
         monElem.style.left = this.positionX + "px";
@@ -47,73 +61,13 @@ class Postit {
         monElem.style.color = this.textColor;
         monElem.style.borderRadius = "5px";
         monElem.innerHTML = this.textContent;
+        
+
         document.body.appendChild(monElem);
+
+        monElem.addEventListener('click', () => {
+            actionClic = true;
+        });
     }
-
-    
-
 }
-
-
-// affichage de la pile de postit
-monTest = new Postit('red', 'yellow', '', 200, 200, 40, 100);
-monTest.afficheTest();
-
-// création d'un événement : si on clique sur la pile de postit...
-document.getElementById('testPostit').addEventListener('mousedown', event => {
-// on crée une copie du postit
-    let monNouvelElem = document.createElement('div');
-    monNouvelElem.setAttribute("id", "newPostit");
-    monNouvelElem.style.position = "fixed";
-    monNouvelElem.style.top = monTest.positionY + "px";
-    monNouvelElem.style.left = monTest.positionX + "px";
-    monNouvelElem.style.width = monTest.width + "px";
-    monNouvelElem.style.height = monTest.height + "px";
-    monNouvelElem.style.backgroundColor = monTest.backgroundColor;
-    monNouvelElem.style.padding = "5px";
-    monNouvelElem.style.color = monTest.textColor;
-    monNouvelElem.style.borderRadius = "5px";
-    monNouvelElem.innerHTML = monTest.textContent;
-    monNouvelElem.style.zIndex = 1000;
-    document.body.appendChild(monNouvelElem);
-// avec un logo delete dessus. Marche pas top
-
-/*
-
-    let logoDelete = document.createElement('div');
-    logoDelete.setAttribute("id", "logo-delete");
-    logoDelete.style.position = "fixed";
-    logoDelete.style.backgroundImage = "url('img/delete.jpg')";
-    logoDelete.style.backgroundSize = 'contain';
-    logoDelete.style.top = (monTest.positionY + 50) + "px";
-    logoDelete.style.left = (monTest.positionY + 50) + "px";
-    logoDelete.style.width = "15px";
-    logoDelete.style.height = "15px";
-    logoDelete.style.zIndex = 1001;
-    document.getElementById('newPostit').appendChild(logoDelete);
-*/    
-// on lui applique une fonction pour le clic de départ sur la pile de postit
-    moveAt(event.pageX, event.pageY);
-
-function moveAt(pageX, pageY) {
-    monNouvelElem.style.left = pageX - monNouvelElem.offsetWidth / 2 + 'px';
-    monNouvelElem.style.top = pageY - monNouvelElem.offsetHeight / 2 + 'px';
-   // logoDelete.style.left = pageX - monNouvelElem.offsetWidth / 2 + 'px';
-    // logoDelete.style.top = pageY - monNouvelElem.offsetHeight / 2 + 'px';
-  }
-  
-
-  function onMouseMove(event) {
-    moveAt(event.pageX, event.pageY);
-  }
-
-  document.addEventListener('mousemove', onMouseMove);
-
-  monNouvelElem.onmouseup = function() {
-    document.removeEventListener('mousemove', onMouseMove);
-    monNouvelElem.onmouseup = null;
-  };
-
-});
-
 
