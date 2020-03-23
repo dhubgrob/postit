@@ -6,8 +6,9 @@ class Postit {
     textContent;
     positionX;
     positionY;
+    numpostit;
 
-    constructor(backgroundColor, textColor, textContent, height, width, positionX, positionY) {
+    constructor(backgroundColor, textColor, textContent, height, width, positionX, positionY,numpostit) {
         this.backgroundColor = backgroundColor;
         this.height = height;
         this.width = width;
@@ -15,6 +16,7 @@ class Postit {
         this.textContent = textContent;
         this.positionX = positionX;
         this.positionY = positionY;
+        this.numpostit = numpostit
     }
 
     changeBackgroundColor(backgroundColor){
@@ -35,19 +37,19 @@ class Postit {
         this.textColor = textColor;
     }
     afficheTest() {
-        let monElem = document.createElement('div')
+        let monElem = document.createElement('div');
+    
         let creation = false;
-
-                //Ma voiture existe t'elle ?
-                if (document.getElementById('testpostit') == null) {
-                    //non, on la crée
-                    monElem = document.createElement('div');
-                    creation = true;
-                }
-                else {
-                    //oui, on la récupère
-                    monElem = document.getElementById('testpostit');
-                }
+        //Ma voiture existe t'elle ?
+        if (document.getElementById('testpostit') == null) {
+      //non, on la crée
+        monElem = document.createElement('div');
+        creation = true;
+        }
+        else {
+        //oui, on la récupère
+        monElem = document.getElementById('testpostit');
+        }
 
 
         monElem.id = "testpostit";
@@ -63,11 +65,30 @@ class Postit {
         monElem.innerHTML = this.textContent;
         
 
+
+
         document.body.appendChild(monElem);
 
-        monElem.addEventListener('click', () => {
-            actionClic = true;
+
+        jdeAttachElem("testpostit", "div", ["basDroite"], "menBas") 
+
+        jdeAttachElem("testpostit", 'i', ["fas", "fa-arrows-alt"], "", () => {
+            console.log("Move sur postIt");
+            etatMove = true;
         });
+    
+        jdeAttachElem("testpostit", 'i', ["fas", "fa-bars"], "", () => {
+            console.log("resize sur postIt");  
+            etatResize = true;
+        });
+
+        jdeAttachElem("testpostit", 'i', ["fas", "fa-edit"], "", () => {
+            console.log("content sur postIt");
+            etatChangeContent = true;
+        });
+
+       // monElem.addEventListener('click', () => {
+         //   etatMove = true;
+       // });
     }
 }
-
