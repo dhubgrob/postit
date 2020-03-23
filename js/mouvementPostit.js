@@ -36,7 +36,7 @@ function refresh() {
         monTest.resize(x, y);
         monTest.afficheTest();
     }
-
+   
     setTimeout(refresh, 100);
 }
 

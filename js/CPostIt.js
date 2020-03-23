@@ -40,14 +40,14 @@ class Postit {
         let monElem = document.createElement('div');
     
         let creation = false;
-        //Ma voiture existe t'elle ?
+
         if (document.getElementById('testpostit') == null) {
-      //non, on la crée
+
         monElem = document.createElement('div');
         creation = true;
         }
         else {
-        //oui, on la récupère
+
         monElem = document.getElementById('testpostit');
         }
 
@@ -64,27 +64,26 @@ class Postit {
         monElem.innerHTML = this.textContent;
         
         document.body.appendChild(monElem);
-
+        jdeAttachElem("testpostit", "div", ["zoneContent"], "zoneContent") 
         jdeAttachElem("testpostit", "div", ["basDroite"], "menBas") 
 
-        jdeAttachElem("testpostit", 'i', ["fas", "fa-arrows-alt"], "", () => {
+        jdeAttachElem("menBas", 'i', ["fas", "fa-arrows-alt"], "", () => {
             console.log("Move sur postIt");
             etatMove = true;
         });
     
-        jdeAttachElem("testpostit", 'i', ["fas", "fa-bars"], "", () => {
+        jdeAttachElem("menBas", 'i', ["fas", "fa-bars"], "", () => {
             console.log("resize sur postIt");  
             etatResize = true;
         });
 
-        jdeAttachElem("testpostit", 'i', ["fas", "fa-edit"], "", () => {
+        jdeAttachElem("menBas", 'i', ["fas", "fa-edit"], "", () => {
             console.log("content sur postIt");
             etatChangeContent = true;
-            let content = window.prompt('entrez un texte');
-            console.log(content);
-            
-            jdeAttachElem("testpostit", "p", ["content"], "content")
-            document.getElementById("content").innerHTML = content;
+            this.textContent = window.prompt('entrez un texte');
+            console.log(this.textContent);
+            jdeAttachElem("menBas", "p", ["content"], "content")
+            document.getElementById("zoneContent").innerHTML = content;
         });
     }
 }
