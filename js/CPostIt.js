@@ -41,17 +41,18 @@ class Postit {
     
         let creation = false;
 
-        if (document.getElementById('testpostit') == null) {
+        if (document.getElementById("postit" + this.numpostit) == null) {
 
         monElem = document.createElement('div');
         creation = true;
         }
         else {
 
-        monElem = document.getElementById('testpostit');
+        monElem = document.getElementById("postit" + this.numpostit);
         }
 
-        monElem.id = "testpostit";
+        monElem.id = "postit" + this.numpostit;
+        monElem.class = "classpostit"
         monElem.style.position = "fixed";
         monElem.style.top = this.positionY + "px";
         monElem.style.left = this.positionX + "px";
@@ -64,8 +65,8 @@ class Postit {
         monElem.innerHTML = this.textContent;
         
         document.body.appendChild(monElem);
-        jdeAttachElem("testpostit", "div", ["zoneContent"], "zoneContent") 
-        jdeAttachElem("testpostit", "div", ["basDroite"], "menBas") 
+        jdeAttachElem("postit" + this.numpostit, "div", ["zoneContent"], "zoneContent") 
+        jdeAttachElem("postit" + this.numpostit, "div", ["basDroite"], "menBas") 
 
         jdeAttachElem("menBas", 'i', ["fas", "fa-arrows-alt"], "", () => {
             console.log("Move sur postIt");
