@@ -23,7 +23,7 @@ class Postit {
 * Affichage textuel du postIt - Sérialisation du postIt
 */
    toString() {
-    return '{"x":' + this.positionX + ',"y":' + this.positionY + ',"width":"' + this.width + '","height":' + this.height + '","backgroundcolor":' + this.backgroundColor + '","textcolor":' + this.textColor +'","textcontent":'+this.textcontent +'"}'
+    return '{"x":' + this.positionX + ',"y":' + this.positionY + ',"width":"' + this.width + '","height":' + this.height + '","backgroundcolor":' + this.backgroundColor + '","textcolor":' + this.textColor +'","textcontent":'+this.textcontent +'","numpostit":'+this.numpostit+'"}'
 }
 
 
