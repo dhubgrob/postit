@@ -71,11 +71,13 @@ class Postit {
         jdeAttachElem("menBas"+this.numpostit, 'i', ["fas", "fa-arrows-alt"], "", () => {
             console.log("Move sur postIt");
             etatMove = true;
+            idMove = this.numpostit;
         });
     
         jdeAttachElem("menBas"+this.numpostit, 'i', ["fas", "fa-bars"], "", () => {
             console.log("resize sur postIt");  
             etatResize = true;
+            idResize = this.numpostit;
         });
 
         jdeAttachElem("menBas"+this.numpostit, 'i', ["fas", "fa-edit"], "", () => {

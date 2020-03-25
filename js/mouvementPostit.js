@@ -1,5 +1,7 @@
 var tabPostit = new Array();
 let etatMove = false;
+let idMove = 0;
+let idResize = 0;
 let etatResize = false;
 let etatChangeContent = false;
 let x;
@@ -32,12 +34,12 @@ document.addEventListener('mouseup', () => {
 
 function refresh() {
     if (etatMove) {
-        monTest.move(x, y);
-        monTest.afficheTest();
+        tabPostit[(idMove-1)].move(x, y);
+        tabPostit[(idMove-1)].afficheTest();
     }
     if (etatResize) {
-        monTest.resize(x, y);
-        monTest.afficheTest();
+        tabPostit[(idResize-1)].resize(x, y);
+        tabPostit[(idResize-1)].afficheTest();
     }
    
     setTimeout(refresh, 100);
