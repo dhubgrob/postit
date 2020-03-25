@@ -1,6 +1,6 @@
 class Postit {
     backgroundColor;
-    heigth;
+    height;
     width;
     textColor;
     textContent;
@@ -65,26 +65,26 @@ class Postit {
         monElem.innerHTML = this.textContent;
         
         document.body.appendChild(monElem);
-        jdeAttachElem("postit" + this.numpostit, "div", ["zoneContent"], "zoneContent") 
-        jdeAttachElem("postit" + this.numpostit, "div", ["basDroite"], "menBas") 
+        jdeAttachElem(monElem.id, "div", ["zoneContent"], "zoneContent"+this.numpostit) 
+        jdeAttachElem(monElem.id, "div", ["basDroite"], "menBas"+this.numpostit) 
 
-        jdeAttachElem("menBas", 'i', ["fas", "fa-arrows-alt"], "", () => {
+        jdeAttachElem("menBas"+this.numpostit, 'i', ["fas", "fa-arrows-alt"], "", () => {
             console.log("Move sur postIt");
             etatMove = true;
         });
     
-        jdeAttachElem("menBas", 'i', ["fas", "fa-bars"], "", () => {
+        jdeAttachElem("menBas"+this.numpostit, 'i', ["fas", "fa-bars"], "", () => {
             console.log("resize sur postIt");  
             etatResize = true;
         });
 
-        jdeAttachElem("menBas", 'i', ["fas", "fa-edit"], "", () => {
+        jdeAttachElem("menBas"+this.numpostit, 'i', ["fas", "fa-edit"], "", () => {
             console.log("content sur postIt");
             etatChangeContent = true;
             this.textContent = window.prompt('entrez un texte');
             console.log(this.textContent);
-            jdeAttachElem("menBas", "p", ["content"], "content")
-            document.getElementById("zoneContent").innerHTML = content;
+            jdeAttachElem("menBas"+this.numpostit, "p", ["content"], "content")
+            document.getElementById("zoneContent"+this.numpostit).innerHTML = content;
         });
     }
 }

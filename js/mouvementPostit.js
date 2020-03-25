@@ -5,10 +5,19 @@ let etatChangeContent = false;
 let x;
 let y;
 
-let monTest = new Postit('red', 'yellow', '', 200, 200, 40, 100, 1);
-tabPostit.push(monTest);
-tabPostit[0].afficheTest()
+let monRed = new Postit('red', 'yellow', '', 150, 150, 40, 100, tabPostit.length+1);
+tabPostit.push(monRed);
+tabPostit[tabPostit.length-1].afficheTest();
 
+let monGreen = new Postit('green', 'yellow', '', 150, 150, 40, 300, tabPostit.length + 1);
+tabPostit.push(monGreen);
+tabPostit[tabPostit.length-1].afficheTest();
+
+let monBlue = new Postit('blue', 'yellow', '', 150, 150, 40, 500, tabPostit.length + 1);
+tabPostit.push(monBlue);
+tabPostit[tabPostit.length-1].afficheTest();
+
+console.log(tabPostit);
 
 document.addEventListener('mousemove', e => {
     x = e.clientX;
