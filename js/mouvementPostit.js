@@ -46,3 +46,49 @@ function refresh() {
 }
 
 refresh();
+
+
+
+function sauvContexte() {
+    createCookie("svTabPostit", "[" + tabPostit.toString() + "]")
+    let myCookie = "svtabPostit=[" + tabPostit.toString() + "]";
+    //On crée un délai d'expiration d'une semaine pour le cookie.
+    let date = new Date();
+    date.setTime(date.getTime() + (30 * 7 * 24 * 60 * 60 * 1000)); /* La date est en millisecondes */
+    myCookie += "; expires=" + date.toGMTString(); /* Les dates des cookies doivent être au format GMT */
+    logMe(myCookie, true);
+    document.cookie = myCookie; /* Ajout du cookie */
+}
+
+window.onload = () => {
+    tmpTabPost = readCookie("svtabPostit")
+    tmpTabPost = (document.cookie.replace(/(?:(?:^|.*;s*)svtabPostit*=s*([^;]*).*$)|^.*$/, '$1'));
+    alert("Voici le contenu de mon cookie : \n" + tmpTabPost + "\n ou \n " + eval(tmpTabPost))
+
+    refresh();
+}
+
+function createCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name, "", -1);
+}
