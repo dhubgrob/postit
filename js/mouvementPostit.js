@@ -1,4 +1,4 @@
-let classElem = new Array();
+var tabPostit = new Array();
 let etatMove = false;
 let etatResize = false;
 let etatChangeContent = false;
@@ -6,7 +6,8 @@ let x;
 let y;
 
 let monTest = new Postit('red', 'yellow', '', 200, 200, 40, 100, 1);
-monTest.afficheTest();
+tabPostit.push(monTest);
+tabPostit[0].afficheTest()
 
 
 document.addEventListener('mousemove', e => {
@@ -19,13 +20,6 @@ document.addEventListener('mouseup', () => {
     etatResize = false;
     etatChangeContent = false;
 })
-
-
-
-
-
-
-
 
 function refresh() {
     if (etatMove) {
